@@ -19,6 +19,29 @@ module.exports = {
             '@core': path.resolve(__dirname, 'src/core')
         }
     },
+    module: {
+        rules: [
+            {
+                test: /\.(sa|sc|c)ss$/i,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    'css-loader',
+                    'postcss-loader',
+                    'sass-loader',
+                ],
+            },
+            {
+                test: /\.m?js$/,
+                exclude: /(node_modules|bower_components)/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env']
+                    }
+                }
+            }
+        ]
+    },
     plugins: [
         new HtmlWebpackPlugin({
             template: 'index.html',
@@ -33,16 +56,7 @@ module.exports = {
             ]
         }),
         new MiniCssExtractPlugin({
-            test: /\.css$/i,
-            use: [MiniCssExtractPlugin.loader, 'css-loader']
+            filename: 'bundle.[hash].css'
         })
     ],
-    module: {
-        rules: [
-            {
-                test: /\.css$/i,
-                use: ["style-loader", "css-loader"]
-            }
-        ]
-    }
 }
