@@ -1,12 +1,17 @@
 {
-  "parser": "@babel/eslint-parser",
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "requireConfigFile": false
+    "requireConfigFile": false,
+    "project": ["./tsconfig.json"]
   },
+  "plugins": ["@typescript-eslint"],
   "env": {
     "es6": true,
     "browser": true,
     "node": true
   },
-  "extends": ["airbnb"]
+  "rules": {
+    "indent": ["error", 2]
+  },
+  "extends": ["airbnb-base", "airbnb-typescript/base"]
 }
