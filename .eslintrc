@@ -11,7 +11,8 @@
     "node": true
   },
   "rules": {
-    "indent": ["error", 2]
+    "indent": ["error", 2],
+    "import/prefer-default-export": 0
   },
   "extends": ["airbnb-base", "airbnb-typescript/base"]
 }
