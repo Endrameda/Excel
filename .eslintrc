@@ -12,7 +12,8 @@
   },
   "rules": {
     "indent": ["error", 2],
-    "import/prefer-default-export": 0
+    "import/prefer-default-export": 0,
+    "@typescript-eslint/lines-between-class-members": 0
   },
   "extends": ["airbnb-base", "airbnb-typescript/base"]
 }
