@@ -1,5 +1,7 @@
+import { ExcelOptionsType, ExcelSelectorType } from './types';
+
 export class Excel {
-  constructor(selector: string, options: any) {
+  constructor(selector: ExcelSelectorType, options: ExcelOptionsType) {
     this.$el = document.querySelector(selector);
     this.components = options.components || [];
   }
