@@ -1,4 +1,5 @@
 import { ExcelOptionsType, ExcelSelectorType } from './types';
+import { $ } from '../../core/DOM';
 
 export class Excel {
   private $el: Element | null;
@@ -10,10 +11,15 @@ export class Excel {
   }
 
   getRoot(): HTMLElement {
-    const $root = document.createElement('div');
+    const $root = $.create('div', 'excel');
 
     this.components.forEach((Component) => {
-      $root.insertAdjacentHTML('beforeend', Component.toHTML());
+      const $el = $.create('div', Component.className);
+      const components = new Component($el);
+
+      $el.innerHTML = Component.toHTML();
+
+      $root.append($el);
     });
 
     return $root;
