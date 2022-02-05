@@ -8,4 +8,18 @@ export class Excel {
     this.$el = document.querySelector(selector);
     this.components = options.components || [];
   }
+
+  getRoot(): HTMLElement {
+    const $root = document.createElement('div');
+
+    this.components.forEach((Component) => {
+      $root.insertAdjacentHTML('beforeend', Component.toHTML());
+    });
+
+    return $root;
+  }
+
+  render() {
+    this.$el?.append(this.getRoot());
+  }
 }
