@@ -1,5 +1,5 @@
 import { ExcelOptionsType, ExcelSelectorType } from './types';
-import { $ } from '../../core/DOM';
+import { $ } from '../../core/DOM/DOM';
 
 export class Excel {
   private $el: Element | null;
@@ -10,14 +10,14 @@ export class Excel {
     this.components = options.components || [];
   }
 
-  getRoot(): HTMLElement {
+  getRoot(): any {
     const $root = $.create('div', 'excel');
 
     this.components.forEach((Component) => {
       const $el = $.create('div', Component.className);
       const components = new Component($el);
 
-      $el.innerHTML = Component.toHTML();
+      $el.html(Component.toHTML());
 
       $root.append($el);
     });
@@ -26,6 +26,6 @@ export class Excel {
   }
 
   render() {
-    this.$el?.append(this.getRoot());
+    this.$el?.append(this.getRoot().$el);
   }
 }

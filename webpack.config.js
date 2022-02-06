@@ -27,10 +27,6 @@ module.exports = {
   },
   resolve: {
     extensions: ['.ts', '.js'],
-    alias: {
-      '@src': pathResolve(dirName, 'src'),
-      '@core': pathResolve(dirName, 'src/core'),
-    },
   },
   module: {
     rules: [
