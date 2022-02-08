@@ -10,7 +10,9 @@ export class DOMListener {
     this.listeners = listeners;
   }
 
-  initOMListeners() {}
+  initOMListeners() {
+    console.log(this.listeners);
+  }
 
   removeDOMListeners() {}
 }

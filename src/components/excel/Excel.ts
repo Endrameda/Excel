@@ -13,13 +13,15 @@ export class Excel {
   getRoot(): any {
     const $root = $.create('div', 'excel');
 
-    this.components.forEach((Component) => {
+    this.components = this.components.map((Component) => {
       const $el = $.create('div', Component.className);
       const components = new Component($el);
 
       $el.html(Component.toHTML());
 
       $root.append($el);
+
+      return components;
     });
 
     return $root;
@@ -27,5 +29,7 @@ export class Excel {
 
   render() {
     this.$el?.append(this.getRoot().$el);
+
+    this.components.forEach((component) => component.init());
   }
 }
