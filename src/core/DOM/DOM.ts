@@ -33,8 +33,8 @@ class DOM {
     this.$el?.append(node);
   }
 
-  on() {
-
+  on(eventType: string, callback: any) {
+    this.$el?.addEventListener(eventType, callback);
   }
 }
 

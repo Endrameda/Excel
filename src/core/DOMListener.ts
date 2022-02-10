@@ -1,3 +1,5 @@
+import { getMethodName } from './helpers';
+
 export class DOMListener {
   private $root;
   private listeners: Array<any>;
@@ -11,7 +13,20 @@ export class DOMListener {
   }
 
   initOMListeners() {
-    console.log(this.listeners);
+    this.listeners.forEach((listener) => {
+      const method = getMethodName(listener);
+
+      // @ts-ignore
+      if (!this[method]) {
+        // @ts-ignore
+        const { name } = this;
+        throw new Error(
+          `Method ${method} is not implemented in ${name} Component`,
+        );
+      }
+      // @ts-ignore
+      this.$root.on(listener, this[method].bind(this));
+    });
   }
 
   removeDOMListeners() {}
