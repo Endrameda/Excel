@@ -36,6 +36,10 @@ class DOM {
   on(eventType: string, callback: any) {
     this.$el?.addEventListener(eventType, callback);
   }
+
+  off(evenType: string, callback: any) {
+    this.$el?.removeEventListener(evenType, callback);
+  }
 }
 
 export function $(selector: DOMSelector) {

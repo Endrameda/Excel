@@ -24,10 +24,18 @@ export class DOMListener {
           `Method ${method} is not implemented in ${name} Component`,
         );
       }
+
       // @ts-ignore
       this.$root.on(listener, this[method].bind(this));
     });
   }
 
-  removeDOMListeners() {}
+  removeDOMListeners() {
+    this.listeners.forEach((listener) => {
+      const method = getMethodName(listener);
+
+      // @ts-ignore
+      this.$root.off(listener, this[method]);
+    });
+  }
 }
