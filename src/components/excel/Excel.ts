@@ -15,13 +15,19 @@ export class Excel {
 
     this.components = this.components.map((Component) => {
       const $el = $.create('div', Component.className);
-      const components = new Component($el);
+      const component = new Component($el);
+
+      // DEBUG
+      if (component.name) {
+        // @ts-ignore
+        window[`c${component.name}`] = component;
+      }
 
       $el.html(Component.toHTML());
 
       $root.append($el);
 
-      return components;
+      return component;
     });
 
     return $root;

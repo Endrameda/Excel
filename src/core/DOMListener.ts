@@ -1,10 +1,11 @@
 import { getMethodName } from './helpers';
+import { ListenersType } from './types';
 
 export class DOMListener {
   private $root;
-  private listeners: Array<any>;
+  private listeners: ListenersType = [];
 
-  constructor($root: any, listeners = []) {
+  constructor($root: any, listeners: ListenersType = []) {
     if (!$root) {
       throw new Error('No $root provided from DomListener!');
     }
@@ -15,15 +16,18 @@ export class DOMListener {
   initOMListeners() {
     this.listeners.forEach((listener) => {
       const method = getMethodName(listener);
-
+      console.log(method);
       // @ts-ignore
       if (!this[method]) {
         // @ts-ignore
         const { name } = this;
+
         throw new Error(
           `Method ${method} is not implemented in ${name} Component`,
         );
       }
+      // @ts-ignore
+      this[method] = this[method].bind(this);
 
       // @ts-ignore
       this.$root.on(listener, this[method].bind(this));
