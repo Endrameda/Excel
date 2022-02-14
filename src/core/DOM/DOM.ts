@@ -1,7 +1,7 @@
 import { DOMSelector } from './types';
 import { Nullable, StringUndefined } from '../../types/globalTypes';
 
-class DOM {
+export class DOM {
   private $el: Nullable<Element>;
 
   constructor(selector: DOMSelector) {

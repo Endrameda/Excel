@@ -1,9 +1,10 @@
 import { ExcelComponent } from '../../core/ExcelComponent';
+import { DOM } from '../../core/DOM/DOM';
 
 export class Formula extends ExcelComponent {
   static className = 'excel__formula';
 
-  constructor($root: any) {
+  constructor($root: DOM) {
     super($root, {
       name: 'Formula',
       listeners: ['input', 'click'],
