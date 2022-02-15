@@ -8,11 +8,16 @@ export class Table extends ExcelComponent {
   constructor($root: DOM) {
     super($root, {
       name: 'Table',
-      // listeners: ['click', 'mousedown', 'mousemove', 'mouseup'],
+      listeners: ['mousedown'],
     });
   }
 
   static toHTML(): string {
     return createTable(500);
+  }
+
+  onMousedown(event: MouseEvent) {
+    const element = event.target as HTMLElement;
+    console.log(element.dataset.resize);
   }
 }
