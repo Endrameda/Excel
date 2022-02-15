@@ -16,7 +16,7 @@ export const createRow = (index: Nullable<number>, content?: string): string => 
 };
 
 export const toColumn = (col: string): string => `
-    <div class="column">
+    <div class="column" data-type="resizable">
         ${col}
         <div class="col-resize" data-resize="col"></div>
     </div>

@@ -3,9 +3,13 @@ import { Nullable, StringUndefined } from '../../types/globalTypes';
 
 export class DOM {
   private $el: Nullable<Element>;
+  $publicEl: Nullable<Element>;
 
   constructor(selector: DOMSelector) {
     this.$el = typeof selector === 'string'
+      ? document.querySelector(selector)
+      : selector;
+    this.$publicEl = typeof selector === 'string'
       ? document.querySelector(selector)
       : selector;
   }
@@ -39,6 +43,15 @@ export class DOM {
 
   off(evenType: string, callback: any) {
     this.$el?.removeEventListener(evenType, callback);
+  }
+
+  closest(selector: string) {
+    // eslint-disable-next-line @typescript-eslint/no-use-before-define
+    return $(this.$el?.closest(selector) as Element);
+  }
+
+  getClientCords(): Nullable<DOMRect> {
+    return this.$el?.getBoundingClientRect();
   }
 }
 
