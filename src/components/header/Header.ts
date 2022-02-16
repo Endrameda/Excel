@@ -6,9 +6,7 @@ export class Header extends ExcelComponent {
   static toHTML(): string {
     return `
       <input type="text" class="input" value="Новая таблица" />
-
       <div>
-
         <div class="button">
           <i class="material-icons">delete</i>
         </div>
@@ -16,7 +14,6 @@ export class Header extends ExcelComponent {
         <div class="button">
           <i class="material-icons">exit_to_app</i>
         </div>
-
       </div>
     `;
   }

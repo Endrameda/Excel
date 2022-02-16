@@ -28,7 +28,6 @@ export class Table extends ExcelComponent {
         const delta = mousemoveEvent.pageX - cords!.right;
         const value = cords!.width + delta;
         const $el = $parent.$publicEl as HTMLElement;
-
         $el.style.width = `${value}px`;
       };
 
