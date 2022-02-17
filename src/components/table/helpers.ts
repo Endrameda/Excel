@@ -15,13 +15,15 @@ export const createRow = (index: Nullable<number>, content?: string): string => 
   `;
 };
 
-export const toColumn = (col: string): string => `
-    <div class="column" data-type="resizable">
+export const toColumn = (col: string, index: number): string => `
+    <div class="column" data-type="resizable" data-col="${index}">
         ${col}
         <div class="col-resize" data-resize="col"></div>
     </div>
 `;
 
-export const toCell = (cell: string): string => `<div class="cell" contenteditable="">${cell}</div>`;
+export const toCell = (_: string, col: number): string => `
+    <div class="cell" contenteditable="" data-col="${col}"></div>
+    `;
 
 export const toChar = (_: string, index: number) => String.fromCharCode(CODES.A + index);

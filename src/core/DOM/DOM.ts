@@ -53,6 +53,10 @@ export class DOM {
   getClientCords(): Nullable<DOMRect> {
     return this.$el?.getBoundingClientRect();
   }
+
+  get data() {
+    return (this.$el as HTMLElement)?.dataset;
+  }
 }
 
 export function $(selector: DOMSelector) {

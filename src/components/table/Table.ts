@@ -24,6 +24,8 @@ export class Table extends ExcelComponent {
       const $parent = $resizer.closest('[data-type="resizable"]');
       const cords = $parent.getClientCords();
 
+      console.log($parent.data);
+
       document.onmousemove = (mousemoveEvent) => {
         const delta = mousemoveEvent.pageX - cords!.right;
         const value = cords!.width + delta;
