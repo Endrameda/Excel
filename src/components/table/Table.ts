@@ -24,13 +24,15 @@ export class Table extends ExcelComponent {
       const $parent = $resizer.closest('[data-type="resizable"]');
       const cords = $parent.getClientCords();
 
-      console.log($parent.data);
-
       document.onmousemove = (mousemoveEvent) => {
         const delta = mousemoveEvent.pageX - cords!.right;
         const value = cords!.width + delta;
         const $el = $parent.$publicEl as HTMLElement;
         $el.style.width = `${value}px`;
+        document.querySelectorAll(`[data-col="${$parent.data.col}"]`)
+          .forEach((el: HTMLElement) => {
+            el.style.width = `${value}px`;
+          });
       };
 
       document.onmouseup = () => {

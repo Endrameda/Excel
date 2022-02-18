@@ -13,8 +13,6 @@ export const createTable = (rowsCount: number = 15): string => {
     .map(toColumn)
     .join('');
 
-  // console.log(cols);
-
   rows.push(createRow(null, cols));
 
   for (let i = 0; i < rowsCount; i += 1) {
