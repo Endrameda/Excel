@@ -1,4 +1,4 @@
 export const CODES = {
-  A: 65,
-  Z: 90,
+    A: 65,
+    Z: 90,
 };

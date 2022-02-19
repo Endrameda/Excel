@@ -2,9 +2,9 @@ import { CODES } from './constants';
 import { Nullable } from '../../types/globalTypes';
 
 export const createRow = (index: Nullable<number>, content?: string): string => {
-  const resizer = index ? '<div class="row-resize" data-resize="row"></div>' : '';
+    const resizer = index ? '<div class="row-resize" data-resize="row"></div>' : '';
 
-  return `
+    return `
     <div class="row">
         <div class="row-info">
             ${index || ''}

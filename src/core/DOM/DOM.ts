@@ -57,6 +57,10 @@ export class DOM {
   get data() {
     return (this.$el as HTMLElement)?.dataset;
   }
+
+  findAll(selector: any) {
+    return this.$el?.querySelectorAll(selector);
+  }
 }
 
 export function $(selector: DOMSelector) {
