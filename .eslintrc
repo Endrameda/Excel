@@ -15,7 +15,8 @@
     "import/prefer-default-export": 0,
     "no-param-reassign": [2, { "props": false }],
     "@typescript-eslint/lines-between-class-members": 0,
-    "@typescript-eslint/indent": ["error", 4]
+    "@typescript-eslint/indent": ["error", 4],
+    "class-methods-use-this": "off"
   },
   "extends": ["airbnb-base", "airbnb-typescript/base"]
 }

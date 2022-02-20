@@ -1,1 +1,1 @@
-export type DOMSelector = string | Element;
+export type DOMSelector = string | HTMLElement;

@@ -36,9 +36,8 @@ export class Table extends ExcelComponent {
                 if (type === resizersType.col) {
                     const delta = mousemoveEvent.pageX - cords!.right;
                     const value = cords!.width + delta;
-                    const $el = $parent.$publicEl as HTMLElement;
 
-                    $el.style.width = `${value}px`;
+                    $parent.css({ width: `${value}px` });
 
                     cols.forEach((el: HTMLElement) => {
                         el.style.width = `${value}px`;
@@ -46,9 +45,8 @@ export class Table extends ExcelComponent {
                 } else {
                     const delta = mousemoveEvent.pageY - cords!.bottom;
                     const value = cords!.height + delta;
-                    const $el = $parent.$publicEl as HTMLElement;
 
-                    $el.style.height = `${value}px`;
+                    $parent.css({ height: `${value}px` });
                 }
             };
 
