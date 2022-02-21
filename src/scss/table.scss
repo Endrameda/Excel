@@ -1,97 +1,98 @@
 %resizer-styles {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  background-color: $primary-color;
-  opacity: 0;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: $primary-color;
+    opacity: 0;
+    z-index: 100;
 
-  &:hover {
-    opacity: 1;
-  }
+    &:hover {
+        opacity: 1 !important;
+    }
 }
 
 .excel__table {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: $header-height + $toolbar-height + $formula-height;
-  overflow-x: auto;
-  padding-bottom: 2px;
-
-  .row {
-    display: flex;
-    flex-direction: row;
-    min-height: 20px;
-    height: $row-height;
-  }
-
-  .row-info {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-width: $info-cell-width;
-    height: 100%;
-    border: 1px solid $border-color;
-    background: #f8f9fa;
-    border-top: none;
-    position: relative;
-  }
-
-  .row-data {
-    display: flex;
-  }
-
-  .column {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #f8f9fa;
-    min-width: 40px;
-    width: $cell-width;
-    border: 1px solid $border-color;
-    border-top: 0;
-    border-left: 0;
-    height: 100%;
-    position: relative;
-  }
-
-  .cell {
-    min-width: 40px;
-    padding: 5px;
-    width: $cell-width;
-    height: 100%;
-    border: 1px solid #e2e3e3;
-    border-top: 0;
-    border-left: 0;
-    color: #111;
-    white-space: nowrap;
-    outline: none;
-
-
-    &.selected {
-      border: none;
-      outline: 2px solid $primary-color;
-      z-index: 2;
-    }
-  }
-
-  .col-resize {
-    @extend %resizer-styles;
-    width: 4px;
-    top: 0;
-
-    &:hover {
-      cursor: col-resize;
-    }
-  }
-
-  .row-resize {
-    @extend %resizer-styles;
+    position: absolute;
     left: 0;
-    height: 4px;
+    right: 0;
+    top: $header-height + $toolbar-height + $formula-height;
+    overflow-x: auto;
+    padding-bottom: 2px;
 
-    &:hover {
-      cursor: row-resize;
+    .row {
+        display: flex;
+        flex-direction: row;
+        min-height: 20px;
+        height: $row-height;
     }
-  }
+
+    .row-info {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-width: $info-cell-width;
+        height: 100%;
+        border: 1px solid $border-color;
+        background: #f8f9fa;
+        border-top: none;
+        position: relative;
+    }
+
+    .row-data {
+        display: flex;
+    }
+
+    .column {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #f8f9fa;
+        min-width: 40px;
+        width: $cell-width;
+        border: 1px solid $border-color;
+        border-top: 0;
+        border-left: 0;
+        height: 100%;
+        position: relative;
+    }
+
+    .cell {
+        min-width: 40px;
+        padding: 5px;
+        width: $cell-width;
+        height: 100%;
+        border: 1px solid #e2e3e3;
+        border-top: 0;
+        border-left: 0;
+        color: #111;
+        white-space: nowrap;
+        outline: none;
+
+
+        &.selected {
+            border: none;
+            outline: 2px solid $primary-color;
+            z-index: 2;
+        }
+    }
+
+    .col-resize {
+        @extend %resizer-styles;
+        width: 4px;
+        top: 0;
+
+        &:hover {
+            cursor: col-resize;
+        }
+    }
+
+    .row-resize {
+        @extend %resizer-styles;
+        left: 0;
+        height: 4px;
+
+        &:hover {
+            cursor: row-resize;
+        }
+    }
 }
