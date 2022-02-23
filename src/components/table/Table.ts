@@ -27,23 +27,29 @@ export class Table extends ExcelComponent {
             const type = $resizer.data.resize;
             let value: number;
 
-            $resizer.css({ opacity: 1, bottom: '-100vh' });
+            if (type === resizersType.col) {
+                $resizer.css({ opacity: 1, bottom: '-100vh' });
+            } else {
+                $resizer.css({ opacity: 1, right: '-100vw' });
+            }
 
             const cols = type === resizersType.col
                 ? this.$root.findAll(`[data-col="${$parent.data.col}"]`)
                 : [];
 
+            const rows = type === resizersType.row
+                ? this.$root.findAll(`[data-row="${$parent.data.row}"]`) : [];
+
             document.onmousemove = (mousemoveEvent) => {
                 if (type === resizersType.col) {
                     const delta = mousemoveEvent.pageX - cords!.right;
                     value = cords!.width + delta;
-                    console.log(`-${delta}px`);
-                    $resizer.css({ right: -`${delta}px` });
+                    $resizer.css({ right: `${-delta}px` });
                 } else {
                     const delta = mousemoveEvent.pageY - cords!.bottom;
                     value = cords!.height + delta;
 
-                    $parent.css({ height: `${value}px` });
+                    $resizer.css({ bottom: `${-delta}px` });
                 }
             };
 
@@ -51,9 +57,15 @@ export class Table extends ExcelComponent {
                 document.onmousemove = null;
                 document.onmouseup = null;
 
-                cols.forEach((el: HTMLElement) => {
-                    el.style.width = `${value}px`;
-                });
+                if (type === resizersType.col) {
+                    cols.forEach((el: HTMLElement) => {
+                        el.style.width = `${value}px`;
+                    });
+                } else {
+                    rows.forEach((el: HTMLElement) => {
+                        el.style.height = `${value}px`;
+                    });
+                }
 
                 $resizer.css({ opacity: 0, bottom: 0, right: 0 });
             };
