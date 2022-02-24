@@ -17,14 +17,12 @@ export class Excel {
             const $el = $.create('div', Component.className);
             const component = new Component($el);
 
-            // DEBUG
             if (component.name) {
                 // @ts-ignore
                 window[`c${component.name}`] = component;
             }
 
             $el.html(Component.toHTML());
-
             $root.append($el);
 
             return component;
