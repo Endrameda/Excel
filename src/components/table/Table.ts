@@ -25,13 +25,15 @@ export class Table extends ExcelComponent {
             const $parent = $resizer.closest('[data-type="resizable"]');
             const cords = $parent.getClientCords();
             const type = $resizer.data.resize;
+
             let value: number;
 
             const cols = type === resizersType.col
                 ? this.$root.findAll(`[data-col="${$parent.data.col}"]`)
                 : [];
             const rows = type === resizersType.row
-                ? this.$root.findAll(`[data-row="${$parent.data.row}"]`) : [];
+                ? this.$root.findAll(`[data-row="${$parent.data.row}"]`)
+                : [];
 
             if (type === resizersType.col) {
                 $resizer.css({ opacity: 1, bottom: '-100vh' });
