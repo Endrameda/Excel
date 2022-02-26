@@ -25,6 +25,7 @@ export class Table extends ExcelComponent {
             const $parent = $resizer.closest('[data-type="resizable"]');
             const cords = $parent.getClientCords();
             const type = $resizer.data.resize;
+            const sideProp = type === resizersType.col ? 'bottom' : 'right';
 
             let value: number;
 
@@ -35,11 +36,7 @@ export class Table extends ExcelComponent {
                 ? this.$root.findAll(`[data-row="${$parent.data.row}"]`)
                 : [];
 
-            if (type === resizersType.col) {
-                $resizer.css({ opacity: 1, bottom: '-100vh' });
-            } else {
-                $resizer.css({ opacity: 1, right: '-100vw' });
-            }
+            $resizer.css({ opacity: 1, [sideProp]: '-9999px' });
 
             document.onmousemove = (mousemoveEvent) => {
                 if (type === resizersType.col) {
