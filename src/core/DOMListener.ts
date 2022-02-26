@@ -16,7 +16,7 @@ export class DOMListener {
     initOMListeners() {
         this.listeners.forEach((listener) => {
             const method = getMethodName(listener);
-            console.log(method);
+
             // @ts-ignore
             if (!this[method]) {
                 // @ts-ignore
